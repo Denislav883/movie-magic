@@ -8,7 +8,7 @@ homeController.get("/", (req, res) => {
 
     console.log(movies)
 
-    res.render("home", { movies, filter });
+    res.render("home", { movies });
 });
 
 homeController.get("/about", (req, res) => {

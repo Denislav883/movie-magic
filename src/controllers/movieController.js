@@ -20,7 +20,7 @@ movieController.get("/:movieId/details", (req, res) => {
     const movieId = req.params.movieId;
     const movie =  movieService.getOne(movieId);
 
-    res.render("details", { movie });
+    res.render("details", { movie, pageTitle: "Details Movies" });
 });
 
 movieController.get("/search", (req, res) => {
@@ -28,7 +28,7 @@ movieController.get("/search", (req, res) => {
 
     const movies = movieService.getAll(filter);
 
-    res.render("search", { movies });
+    res.render("search", { movies, filter, pageTitle: "Search Movies"});
 });
 
 export default movieController;
