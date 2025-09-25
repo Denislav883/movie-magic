@@ -6,7 +6,7 @@ const movieController = Router();
 movieController.get("/create", (req, res) => {
     const movieData = req.body;
 
-    movieService.create(movieData);
+   movieService.create(movieData);
 
     res.render("create");
 });
