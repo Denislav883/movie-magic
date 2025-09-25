@@ -15,7 +15,7 @@ const movies = [
     title: "Man of Steal",
     genre: "Superhero",
     description: "An alien child is evacuated from his dying world and sent to Earth to live among humans.",
-    imageURL: "https://play-lh.googleusercontent.com/7_avhryHBfdjEJkKjE7yEtxLfwUBEs97VkHcBhPLPkZCIrQ353Jxx_M1qIBCjdze4bXK=w240-h480-rw",
+    imageURL: "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/manofsteel_3.png",
     director: "Zack Snyder",
     year: "2013",
     rating: "7.1",
