@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Denislav883/movie-magic/issues"
   },
-  "homepage": "https://github.com/Denislav883/movie-magic#readme"
+  "homepage": "https://github.com/Denislav883/movie-magic#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
