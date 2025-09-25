@@ -19,7 +19,7 @@ const movies = [
     description: "An alien child is evacuated from his dying world and sent to Earth to live among humans.",
     imageUrl: "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/manofsteel_3.png",
     director: "Zack Snyder",
-    year: "2013",
+    year: "2015",
     rating: "7.1",
     category: "movie"
     },
@@ -48,6 +48,18 @@ export default class Movie {
 
         if(filter._id) {
             result = movies.filter(movie => movie._id === filter._id);
+        }
+
+        if(filter.title) {
+
+        }
+
+        if(filter.genre) {
+
+        }
+
+        if(filter.year) {
+            result = result.filter(movie => movie.year === filter.year);
         }
 
         return result
