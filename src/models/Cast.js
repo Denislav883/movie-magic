@@ -2,19 +2,19 @@ import { Schema, model } from "mongoose";
 
 const castSchema = new Schema({
     name: {
-        String,
+        type: String,
         required: [true, "Cast name is required!"]
     },
     age: {
-        Number,
+        type: Number,
         required: [true, "Cast age is required!"]
     },
     born: {
-        Number,
+        type: String,
         required: [true, "Cast born is required!"]
     },
     imageUrl: {
-        String,
+        type: String,
         required: [true, "Cast imageUrl is required!"]
     }
 });
