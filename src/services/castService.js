@@ -1,9 +1,6 @@
 import Cast from "../models/Cast.js";
 
 export default {
-    create(castData) {
-        return Cast.create(castData);
-    },
     getAll(filter = {}) {
        let query = Cast.find() 
        
@@ -11,7 +8,10 @@ export default {
             query = query.in("_id", filter.includes); // Mongoose
             //query = query.find({"_id": {$in: filter.includes}});  //MongoDb
        }
-       
-       return Cast.find();
+
+       return query;
+    },
+    create(castData) {
+        return Cast.create(castData);
     }
 }
