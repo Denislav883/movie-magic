@@ -2,7 +2,7 @@ import express from "express";
 import handlebars from "express-handlebars";
 import mongoose from "mongoose";
 
-import routes from "./router.js";
+import routes from "./routes.js";
 
 export const app = express();
 
