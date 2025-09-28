@@ -13,11 +13,7 @@ export default class Movie {
     
     static find(filter = {}) {
         let result = db.movies.slice();
-
-        if(filter._id) {
-            result = db.movies.filter(movie => movie._id === filter._id);
-        }
-
+        
         if(filter.title) {
             result = result.filter(movie => movie.title.toLowerCase().includes(filter.title.toLowerCase()));
         }
@@ -44,7 +40,7 @@ export default class Movie {
     }
 
     get id() {
-        return this._id;
+        return this._id.toString();
     }
 
     async save() {
