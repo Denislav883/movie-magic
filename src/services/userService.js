@@ -1,5 +1,8 @@
 import bcrypt from "bcrypt";
 import User from "../models/User.js"
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = "asodfnasdjhaikjdna7dy87328943239ujkoliadjoiasj98hda";
 
 export default {
     register(userData) {
@@ -21,6 +24,12 @@ export default {
         }
 
         // Create token
-        
+        const payload = {
+            id: user.id,
+            email: user.email
+        };
+
+        const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "2h" });
+        return token;
     }
 }
