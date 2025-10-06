@@ -7,7 +7,7 @@ const movieController = Router();
 
 movieController.get("/create", isAuth, (req, res) => {
 
-    res.render("create");
+    res.render("movies/create");
 });
 
 movieController.post("/create", isAuth, async (req, res) =>{
@@ -26,7 +26,7 @@ movieController.get("/:movieId/details", async (req, res) => {
 
     const ratingViewData = `&#x2605;`.repeat(Math.trunc(movie.rating));
 
-    res.render("details", { movie, pageTitle: "Details Movies", rating: ratingViewData });
+    res.render("movies/details", { movie, pageTitle: "Details Movies", rating: ratingViewData });
 });
 
 movieController.get("/search", async (req, res) => {
