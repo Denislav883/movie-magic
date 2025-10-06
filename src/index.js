@@ -1,8 +1,10 @@
+import routes from "./routes.js";
+import authMiddleware from "./middlewares/authMiddleware.js";
+
 import express from "express";
 import handlebars from "express-handlebars";
 import mongoose from "mongoose";
-
-import routes from "./routes.js";
+import cookieParser from "cookie-parser";
 
 export const app = express();
 
@@ -30,9 +32,20 @@ app.engine("hbs", handlebars.engine({
 app.set("view engine", "hbs");
 app.set("views", "src/views");
 
+// Setup static middleware
 app.use(express.static('src/public'));
+
+// Parse form data from req
 app.use(express.urlencoded());
 
+// Cookie Parser
+app.use(cookieParser());
+
+// Use auth middleware
+app.use(authMiddleware);
+
+// Routes
 app.use(routes);
 
+// Start server
 app.listen(5000, console.log("Server is listening on http://localhost:5000..."));
