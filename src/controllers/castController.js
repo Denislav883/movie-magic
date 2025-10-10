@@ -1,5 +1,6 @@
 import { Router } from "express";
 import castService from "../services/castService.js";
+import { getErrorMessage } from "../utils/errorUtils.js";
 
 const castController = new Router();
 
@@ -10,9 +11,16 @@ castController.get("/create", (req, res) => {
 castController.post("/create", async (req, res) => {
     const castData = req.body;
 
-    await castService.create(castData);
+    try {
+        await castService.create(castData);
 
-    res.redirect("/");
+        res.redirect("/");
+    } catch(err) {
+        const errorMessage = getErrorMessage(err);
+
+        res.status(400).render("casts/create", { error: errorMessage, cast: castData })
+    }
+
 });
 
 export default castController;  
