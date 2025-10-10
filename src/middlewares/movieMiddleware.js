@@ -1,0 +1,17 @@
+import movieService from "../services/movieService";
+
+export async function isMovieCreator(req, res, next) {
+    const movieId = req.params.id;
+
+    const movie = await movieService.getOne(movieId);
+
+    if(!req.isAuthenticated) {
+        return res.redirect("/auth/login");
+    }
+
+    if(movie.creator !== req.user.id) {
+        return res.status(401).render("/404", { error: "Only creator can edit this movie!"});
+    }
+
+    next();
+}
