@@ -1,4 +1,4 @@
-import movieService from "../services/movieService";
+import movieService from "../services/movieService.js";
 
 export async function isMovieCreator(req, res, next) {
     const movieId = req.params.id;
