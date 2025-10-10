@@ -90,20 +90,32 @@ movieController.get("/:movieId/delete", isAuth, async (req, res) => {
 movieController.get("/:movieId/edit", isAuth, async (req, res) => {
     const movieId = req.params.movieId;
 
+    try {
     const movie = await movieService.getOne(movieId);
 
     const categoriesViewData = getMovieCategoryViewData(movie.category);
 
     res.render("movies/edit", { movie, categories: categoriesViewData });
+    } catch(err) {
+        res.render("/404", { error: "Movie not found!"});
+    }
 });
 
 movieController.post("/:movieId/edit", async (req, res) => {
     const movieId = req.params.movieId;
     const movieData = req.body;
 
-    await movieService.edit(movieId, movieData);
+    try {
+        await movieService.edit(movieId, movieData);
 
-    res.redirect(`/movies/${movieId}/details`);
+        res.redirect(`/movies/${movieId}/details`);
+    } catch(err) {
+        res.status(400).render("movies/edit", {
+            movie: movieData,
+            error: getErrorMessage(err),
+            categories: getMovieCategoryViewData(movieData.category)
+            })
+    }
 });
 
 function getMovieCategoryViewData(selectedCategory) {
