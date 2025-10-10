@@ -33,6 +33,8 @@ movieController.post("/create", isAuth, async (req, res) =>{
 
 movieController.get("/:movieId/details", async (req, res) => {
     const movieId = req.params.movieId;
+
+    try {
     const movie = await movieService.getOneDetailed(movieId);
 
     const ratingViewData = `&#x2605;`.repeat(Math.trunc(movie.rating));
@@ -40,6 +42,9 @@ movieController.get("/:movieId/details", async (req, res) => {
     const isCreator = movie.creator && movie.creator.equals(req.user?.id);
 
     res.render("movies/details", { movie, pageTitle: "Details Movies", rating: ratingViewData, isCreator });
+    } catch(err) {
+        res.redirect("404", { error: "Movie not found!" });
+    }
 });
 
 movieController.get("/search", async (req, res) => {
