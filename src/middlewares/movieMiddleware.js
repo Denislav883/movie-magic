@@ -1,7 +1,7 @@
 import movieService from "../services/movieService.js";
 
 export async function isMovieCreator(req, res, next) {
-    const movieId = req.params.id;
+    const movieId = req.params.movieId;
 
     const movie = await movieService.getOne(movieId);
 
