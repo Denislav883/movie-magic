@@ -98,7 +98,7 @@ movieController.get("/:movieId/edit", isAuth, isMovieCreator, async (req, res) =
 
     res.render("movies/edit", { movie, categories: categoriesViewData });
     } catch(err) {
-        res.render("/404", { error: "Movie not found!"});
+        res.render("404", { error: "Movie not found!"});
     }
 });
 

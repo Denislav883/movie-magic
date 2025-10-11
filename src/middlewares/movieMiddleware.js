@@ -9,8 +9,8 @@ export async function isMovieCreator(req, res, next) {
         return res.redirect("/auth/login");
     }
 
-    if(!movie.creator.equals(req.user.id)) {
-        return res.status(401).render("/404", { error: "Only creator can edit this movie!"});
+    if(movie.creator != req.user.id) {
+        return res.status(401).render("404", { error: "Only creator can edit this movie!" });
     }
 
     next();
